@@ -241,7 +241,7 @@ class _TasksScreenState extends State<TasksScreen> {
                                       TextOverflow.clip),
                                   buildText(
                                       'Manage your task schedule easily\nand efficiently',
-                                      kBlackColor.withOpacity(.5),
+                                      kBlackColor.withValues(alpha: 0.5),
                                       textSmall,
                                       FontWeight.normal,
                                       TextAlign.center,

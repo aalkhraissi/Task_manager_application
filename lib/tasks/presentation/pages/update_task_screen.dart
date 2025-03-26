@@ -77,8 +77,8 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                     child: BlocConsumer<TasksBloc, TasksState>(
                         listener: (context, state) {
                       if (state is UpdateTaskFailure) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            getSnackBar(state.error, kRed));
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(getSnackBar(state.error, kRed));
                       }
                       if (state is UpdateTaskSuccess) {
                         Navigator.pop(context);
@@ -118,7 +118,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 20),
                             decoration: BoxDecoration(
-                                color: kPrimaryColor.withOpacity(.1),
+                                color: kPrimaryColor.withValues(alpha: 0.1),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(5))),
                             child: buildText(
@@ -171,20 +171,13 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                           SizedBox(
                             width: size.width,
                             child: ElevatedButton(
-                                style: ButtonStyle(
-                                  foregroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.white),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          kPrimaryColor),
-                                  shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          10), // Adjust the radius as needed
-                                    ),
+                                style: TextButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        10), // Adjust the radius as needed
                                   ),
+                                  backgroundColor: kPrimaryColor,
+                                  foregroundColor: Colors.white,
                                 ),
                                 onPressed: () {
                                   var taskModel = TaskModel(
